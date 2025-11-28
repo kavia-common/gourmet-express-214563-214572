@@ -11,6 +11,15 @@ import RestaurantDetail from './pages/RestaurantDetail';
 import CartPage from './pages/CartPage';
 import OrderTracking from './pages/OrderTracking';
 
+/**
+ * Routes overview:
+ * - /               -> Home
+ * - /restaurants    -> Restaurants list
+ * - /restaurants/:id-> Restaurant detail + cart + checkout
+ * - /cart           -> Cart page (checkout triggers order creation)
+ * - /orders/:id     -> Order details/tracking (WS or polling updates)
+ */
+
 // PUBLIC_INTERFACE
 function App() {
   /** Application root: provides context, theme, and routes */

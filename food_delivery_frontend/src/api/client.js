@@ -2,7 +2,10 @@
  * Lightweight API client with graceful fallbacks.
  * Reads base URL from env vars, falls back to relative path and mock when needed.
  */
-const BASE = process.env.REACT_APP_API_BASE || process.env.REACT_APP_BACKEND_URL || '';
+const BASE =
+  (process.env.REACT_APP_API_BASE && process.env.REACT_APP_API_BASE.trim()) ||
+  (process.env.REACT_APP_BACKEND_URL && process.env.REACT_APP_BACKEND_URL.trim()) ||
+  '';
 
 const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
@@ -46,4 +49,10 @@ export async function apiPost(path, body, fallbackData = null) {
     if (fallbackData !== null) return fallbackData;
     throw err;
   }
+}
+
+// PUBLIC_INTERFACE
+export function getApiBaseUrl() {
+  /** Returns the resolved API base URL for diagnostics or advanced usage */
+  return BASE;
 }

@@ -17,6 +17,7 @@ export default function CartPage() {
   const navigate = useNavigate();
 
   const onCheckout = async () => {
+    if (!items.length) return;
     const payload = { restaurantId: items[0]?.restaurantId || 'misc', items };
     const order = await submitOrder(payload);
     navigate(`/orders/${order.id}`);
@@ -25,6 +26,7 @@ export default function CartPage() {
   return (
     <main className="ge-container ge-page">
       <h2>Your Cart</h2>
+      {!items.length && <p className="muted">Add some items from a restaurant to proceed to checkout.</p>}
       <CartSidebar onCheckout={onCheckout} />
     </main>
   );
