@@ -1,48 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './index.css';
 import './App.css';
+import { AppProvider } from './context/AppContext';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
+import Home from './pages/Home';
+import Restaurants from './pages/Restaurants';
+import RestaurantDetail from './pages/RestaurantDetail';
+import CartPage from './pages/CartPage';
+import OrderTracking from './pages/OrderTracking';
 
 // PUBLIC_INTERFACE
 function App() {
-  const [theme, setTheme] = useState('light');
-
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
+  /** Application root: provides context, theme, and routes */
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <BrowserRouter>
+        <div className="App" style={{ background: 'var(--color-bg)' }}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/restaurants" element={<Restaurants />} />
+            <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/orders/:id" element={<OrderTracking />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </AppProvider>
   );
 }
 

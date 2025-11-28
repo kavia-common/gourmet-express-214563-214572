@@ -1,0 +1,62 @@
+.rest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.rest-card {
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.rest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.rest-card .cover {
+  height: 140px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  opacity: 0.9;
+}
+
+.rest-card .body {
+  padding: 12px 14px 16px 14px;
+}
+
+.rest-card .title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rest-card .title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.rest-card .rating {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.rest-card .meta {
+  display: flex;
+  gap: 8px;
+  color: var(--color-muted);
+  margin-top: 6px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.rest-card .dot {
+  opacity: 0.6;
+}

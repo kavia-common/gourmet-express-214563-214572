@@ -1,0 +1,76 @@
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.menu-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.menu-card .name {
+  margin: 0 0 6px;
+}
+
+.menu-card .desc {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.menu-card .price {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.menu-card .actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn.primary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.pill {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.pill.primary {
+  border-color: var(--color-primary);
+  color: white;
+  background: var(--color-primary);
+}
+
+.pill.secondary {
+  border-color: var(--color-border);
+}
+
+.qty {
+  min-width: 20px;
+  text-align: center;
+}
